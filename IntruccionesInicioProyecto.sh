@@ -33,3 +33,6 @@ Genera código Lorem Ipsum (texto de relleno)
 #Beautify
 
 HTML, CSS y JavaScript siempre bien formateado.
+
+#Guardamos todo en maquina exportada en el disco duro 
+D:\ASIR_SEGUNDOINTENTO\LubuntuParaShell.ova
