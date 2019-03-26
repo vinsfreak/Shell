@@ -2,10 +2,15 @@
 #Vamos a crear un menú y vamos a desarollar funciones.
 #Funciones
 function fnuevo(){
-    marca=$1
-    modelo=$2
-    matricula=$3
-    fecha=$4
+echo -n MARCA:
+ read marca
+echo -n MODELO:
+ read modelo
+echo -n MATRICULA:
+ read matricula
+echo -n FECHA:
+fecha=`date +%d-%m-%y%Y"`
+
     echo -e $marca"#"$modelo"#"$matricula"#"$fecha"\n" >>coches.txt
 
 }
