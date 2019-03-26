@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+##!/usr/bin/env bash
 #Vamos a crear un menú y vamos a desarollar funciones.
 #Funciones
 function fnuevo(){
@@ -9,10 +9,17 @@ echo -n MODELO:
 echo -n MATRICULA:
  read matricula
 echo -n FECHA:
-fecha=`date +%d-%m-%y%Y"`
+fecha=`date "+%d-%m-%Y"`
 
-    echo -e $marca"#"$modelo"#"$matricula"#"$fecha"\n" >>coches.txt
-
+    echo -e $marca"#"$modelo"#"$matricula"#"$fecha >>coches.txt
+    if [ $? -eq 0 ]
+#Comprobación de errores, si $?=0 está todo bien, si hubiera otra cosa hay un error.
+        then
+            cadena="Todo correcto, registro dado de alta"
+    else
+            cadena="No se ha podido guardar nuevo registro"
+    fi
+    return $cadena
 }
 #Un bucle, mientras la opción no sea 4, hace algo.
 op=0
@@ -30,7 +37,10 @@ do
     #Mira uno por uno cual coincide con el valor 
     #Podemos indicarle patrones indicando las opciones..
     #Lo mas limpio es treabajar con funciones en los menús fnuevo.
-    1) fnuevo fnuevo citroen A4 4051FGM 25-3-2019;;
+    1) fnuevo
+    echo $?
+    ;;
+    #DOlar interrogacion recibe el valor de el return
     #Provamos si funciona el pasar parámetros
     2) flistamarca;;   #;; significa que no haga lo siguiente antes de aplicar la anterior.
     3) flistafecha;;
