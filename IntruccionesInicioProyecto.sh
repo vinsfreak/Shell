@@ -5,7 +5,8 @@ Así como la instalación de las guest additions de VBox para copiar y pergar de
 
 # sudo apt-get update
 # sudo apt-get upgrade
-# sudo apt-get install virtualbox-guest-additions-iso
+Introducimos CD de las additions.
+# alvaro@alvaro-pc:/media/alvaro/VBox_GAs_5.2.4$ sudo ./VBoxLinuxAdditions.run
 
 
 Una vez realizado vamos a instalar Brackets como entorno de desarollo.
@@ -32,3 +33,6 @@ Genera código Lorem Ipsum (texto de relleno)
 #Beautify
 
 HTML, CSS y JavaScript siempre bien formateado.
+
+#Guardamos todo en maquina exportada en el disco duro 
+D:\ASIR_SEGUNDOINTENTO\LubuntuParaShell.ova
