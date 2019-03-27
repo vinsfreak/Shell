@@ -37,23 +37,35 @@ echo -n MARCA:
  #Le indicamos que todas las minusculas que metamos por teclado las convierte en mayuscula pues no podemos decidir que mete el usuario pero si "traducirlo" a lo que queremos.
  #Hacer una traza se llama
  marca=`echo $marca | tr "[a-z]" " [A-Z]"`
+ echo -n MODELO:
+ read modelo
+ modelo=`echo $modelo | tr "[a-z]" " [A-Z]"`
  
  echo "LISTADO COCHES MARCA: " $marca
  #Aqui le indicamos que el separador es la almuadilla
  OIFS=$IFS
  IFS="#"
+ existe='n'
  while read ma mo mat fec
     do
     #Buscamos la marca y la metemos en la variable
-    echo "Marca buscada-->" $marca "Marca leida-->" $ma
+    #echo "Marca buscada-->" $marca "Marca leida-->" $ma
      if [ $marca == $ma ]
         then 
         echo "MODELO: " $mo
         echo "MATRICULA: " $mat
         echo "FECHA: " $fec
         echo "-----------------------------"
+     fi
     #Recibe los datos de fichero en el done.
     done < ./coches.txt
+    IFS=$OIFS
+    if [ "$existe" == "n" ]
+     then
+      echo "No ha habido coches de esa marca en el aparcamiento"
+    fi
+    read x
+
 }
 
 
