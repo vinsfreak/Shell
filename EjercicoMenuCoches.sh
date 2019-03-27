@@ -28,10 +28,16 @@ fecha=`date "+%d-%m-%Y"`
 }
 
 
+
+
 #Aqui creamos la funcion lista.
 function flistamarca(){
 echo -n MARCA:
  read marca 
+ #Le indicamos que todas las minusculas que metamos por teclado las convierte en mayuscula pues no podemos decidir que mete el usuario pero si "traducirlo" a lo que queremos.
+ #Hacer una traza se llama
+ marca=`echo $marca | tr "[a-z]" " [A-Z]"`
+ 
  echo "LISTADO COCHES MARCA: " $marca
  #Aqui le indicamos que el separador es la almuadilla
  OIFS=$IFS
@@ -39,7 +45,7 @@ echo -n MARCA:
  while read ma mo mat fec
     do
     #Buscamos la marca y la metemos en la variable
-    echo "Marca buscada-->" $marca "MArca leida-->" $ma
+    echo "Marca buscada-->" $marca "Marca leida-->" $ma
      if [ $marca == $ma ]
         then 
         echo "MODELO: " $mo
@@ -49,6 +55,11 @@ echo -n MARCA:
     #Recibe los datos de fichero en el done.
     done < ./coches.txt
 }
+
+
+
+
+
 #Un bucle, mientras la opción no sea 4, hace algo.
 op=0
 while [ ${op} -ne 4 ]
