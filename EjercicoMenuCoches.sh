@@ -27,14 +27,19 @@ fecha=`date "+%d-%m-%Y"`
     return $valor
 }
 
+
 #Aqui creamos la funcion lista.
 function flistamarca(){
 echo -n MARCA:
  read marca 
  echo "LISTADO COCHES MARCA: " $marca
+ #Aqui le indicamos que el separador es la almuadilla
+ OIFS=$IFS
+ IFS="#"
  while read ma mo mat fec
     do
     #Buscamos la marca y la metemos en la variable
+    echo "Marca buscada-->" $marca "MArca leida-->" $ma
      if [ $marca == $ma ]
         then 
         echo "MODELO: " $mo
