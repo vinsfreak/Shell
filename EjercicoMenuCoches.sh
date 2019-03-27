@@ -74,7 +74,7 @@ echo -n DIA:
  read dia
  correcto = 'n'
  
-    while[ "$correcto" == "n"]
+    while [ "$correcto" == "n" ]
         do
         echo -n DIA:
         read dia
@@ -85,11 +85,11 @@ echo -n DIA:
         done
         
 correcto='n'
-    while[ "$correcto" == "n"]
+    while [ "$correcto" == "n" ]
         do
         echo -n MES:
         read mes
-        if [[ $mes -ga 1 && $mes -le 12 ]]
+        if [[ $mes -ge 1 && $mes -le 12 ]]
             then
                 correcto='s'
         fi
@@ -134,3 +134,46 @@ echo "Coches aparcados el dia " $fecha
     read x
 
 }
+
+#Un bucle, mientras la opción no sea 4, hace algo.
+op=0
+while [ ${op} -ne 4 ]
+op= `yad --list --title="ADMINISTRACION APARCAMIENTO: " --column="" --colum="" "1" "NUEVO DATO" "2" "LISTADO POR MARCA" "3" "LISTADO POR FECHA" "4" "SALIR DEL PROGRAMA" --center
+ --width=250 --height=200`
+ 
+ op=`echo ${op} | cut -f1 -d'|'`
+ #do
+  #echo "ADMINISTRACION APARCAMIENTO"
+  #echo "1. Nuevo dato"
+  #echo "2. Listado por marca"
+  #echo "3. Listado por Fecha"
+  #echo "4. Salir"
+  #echo -n "Seleccione opción: "
+  #read op
+  
+    case ${op} in
+    #Mira uno por uno cual coincide con el valor 
+    #Podemos indicarle patrones indicando las opciones..
+    #Lo mas limpio es treabajar con funciones en los menús fnuevo.
+    1) fnuevo
+    #Lo que hacemos es como dá valores una condición para ello
+    if [ $? -eq 0 ]
+        then
+             echo "Todo correcto, registro dado de alta"
+        else
+            echo "No se ha podido guardar nuevo registro"
+    fi
+    #Esto es una pausa lo pasamos a una variable que no vamos a usar.
+    read x;;
+    #DOlar interrogacion recibe el valor de el return
+    #Provamos si funciona el pasar parámetros
+    2) flistamarca;;   #;; significa que no haga lo siguiente antes de aplicar la anterior.
+    3) flistafecha;;
+    esac
+    
+    #Podemos crear las funciones en cualquier punto pero lo suyo es #crearlas antes de llamarlas, es decir al principio.
+done
+#Una vez que creamos el archivo hay que darle permisos de ejecución.
+# chmod +x nombredelarchivo.sh
+# ls -l nombredelarchivo.sh
+# Nos muestra los permisos.
