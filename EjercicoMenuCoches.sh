@@ -137,12 +137,14 @@ echo "Coches aparcados el dia " $fecha
 
 #Un bucle, mientras la opción no sea 4, hace algo.
 op=0
+
 while [ ${op} -ne 4 ]
+ do
 op= `yad --list --title="ADMINISTRACION APARCAMIENTO: " --column="" --colum="" "1" "NUEVO DATO" "2" "LISTADO POR MARCA" "3" "LISTADO POR FECHA" "4" "SALIR DEL PROGRAMA" --center
  --width=250 --height=200`
- 
+ echo ${op}
  op=`echo ${op} | cut -f1 -d'|'`
- #do
+
   #echo "ADMINISTRACION APARCAMIENTO"
   #echo "1. Nuevo dato"
   #echo "2. Listado por marca"
